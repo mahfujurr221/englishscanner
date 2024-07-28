@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
             'fname' => 'Super',
             'lname' => 'Admin',
             'type' => 'supper-admin',
-            'email' => 'supper-admin@shetab.tech',
+            'email' => 'supper-admin@englishscanner.com',
             'phone' => '00000000000',
             'password' => bcrypt('supperadmin1234'),
         ]);
@@ -34,9 +34,8 @@ class DatabaseSeeder extends Seeder
 
         //Role Seeder 
         \Spatie\Permission\Models\Role::create(['name' => 'Super Admin', 'guard_name' => 'web']);
-        \Spatie\Permission\Models\Role::create(['name' => 'Admin', 'guard_name' => 'web']);
-        \Spatie\Permission\Models\Role::create(['name' => 'SR', 'guard_name' => 'web']);
-        \Spatie\Permission\Models\Role::create(['name' => 'Employee', 'guard_name' => 'web']);
+        \Spatie\Permission\Models\Role::create(['name' => 'Operator', 'guard_name' => 'web']);
+        \Spatie\Permission\Models\Role::create(['name' => 'Student', 'guard_name' => 'web']);
 
         $superAdmin->assignRole('Super Admin');
         $developer->assignRole('Super Admin');
