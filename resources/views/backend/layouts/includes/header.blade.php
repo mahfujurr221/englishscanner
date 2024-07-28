@@ -4,7 +4,7 @@
   <div class="d-flex align-items-center justify-content-between">
     <a href="{{ route('dashboard') }}" class="logo d-flex align-items-center">
       <img src="{{ asset('/uploads/logo.png') }}" alt="Logo">
-      <span class="d-none d-lg-block logo-orange">SHE</span><span class="d-none d-lg-block logo-info">TAB</span>
+      <span class="d-none d-lg-block logo-orange">English</span><span class="d-none d-lg-block logo-info">Scanner</span>
     </a>
     <i class="bi bi-list toggle-sidebar-btn"></i>
   </div><!-- End Logo -->
