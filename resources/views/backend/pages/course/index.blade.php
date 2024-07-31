@@ -90,27 +90,37 @@
     </x-slot>
     <div class="mb-2 form-group">
         <label class="form-label" for="title">Title <span class="text-danger">*</span></label>
-        <x-input type="text" name="title" placeholder="Enter Course Title" />
+        <x-input type="text" name="title" placeholder="Enter Course Title" required />
+        @error('title')
+        <span class="text-danger">{{ $message }}</span>
+        @enderror
     </div>
 
     <div class="mb-2 form-group">
         <label class="form-label" for="code">Code<span class="text-danger">*</span></label>
-        <x-input type="text" name="code" placeholder="Enter Course Code" />
+        <x-input type="text" name="code" placeholder="Enter Course Code" required/>
+        @error('code')
+        <span class="text-danger">{{ $message }}</span>
+        @enderror
     </div>
 
     <div class="mb-2 form-group">
         <label class="form-label" for="description">Description <span class="text-danger">*</span></label>
-        <textarea name="description" class="form-control" placeholder="Enter Course Description" rows="7"></textarea>
+        <textarea name="description" class="form-control" placeholder="Enter Course Description" rows="7" required></textarea>
+        @error('description')
+        <span class="text-danger">{{ $message }}</span>
+        @enderror
     </div>
 
     <div class="mb-2 form-group">
         <label class="form-label" for="course_fee">Course Fee <span class="text-danger">*</span></label>
-        <x-input type="number" name="course_fee" placeholder="Enter Course Fee" />
+        <x-input type="number" name="course_fee" placeholder="Enter Course Fee" required />
     </div>
-    @error('title')
+    @error('course_fee')
     <span class="text-danger">{{ $message }}</span>
     @enderror
 </x-modal>
+
 
 {{-- Edit Modal --}}
 <x-modal id="editCourseModal" title="Update Course" modalSize="modal-md" method="POST">
@@ -122,7 +132,7 @@
     </x-slot>
     <div class="mb-2 form-group">
         <label class="form-label" for="title">Title <span class="text-danger">*</span></label>
-        <x-input type="text" name="title" placeholder="Enter Course Title" id="edit_title" />
+        <x-input type="text" name="title" placeholder="Enter Course Title" id="edit_title" required />
         @error('title')
         <span class="text-danger">{{ $message }}</span>
         @enderror
@@ -130,7 +140,7 @@
 
     <div class="mb-2 form-group">
         <label class="form-label" for="code">Code</label>
-        <x-input type="text" name="code" placeholder="Enter Course Code" id="edit_code" />
+        <x-input type="text" name="code" placeholder="Enter Course Code" id="edit_code" required />
         @error('code')
         <span class="text-danger">{{ $message }}</span>
         @enderror
@@ -139,7 +149,7 @@
     <div class="mb-2 form-group">
         <label class="form-label" for="description">Description <span class="text-danger">*</span></label>
         <textarea name="description" class="form-control" placeholder="Enter Course Description" rows="7"
-            id="edit_description"></textarea>
+            id="edit_description" required></textarea>
         @error('description')
         <span class="text-danger">{{ $message }}</span>
         @enderror
@@ -147,7 +157,7 @@
 
     <div class="mb-2 form-group">
         <label class="form-label" for="course_fee">Course Fee <span class="text-danger">*</span></label>
-        <x-input type="number" name="course_fee" placeholder="Enter Course Fee" id="edit_course_fee" />
+        <x-input type="number" name="course_fee" placeholder="Enter Course Fee" id="edit_course_fee" required />
         @error('course_fee')
         <span class="text-danger">{{ $message }}</span>
         @enderror
@@ -158,24 +168,6 @@
 
 @push('scripts')
 <script>
-    // document.addEventListener('DOMContentLoaded', () => {
-    //     var id=
-
-    //     @if($errors->any())
-    //         new bootstrap.Modal(editModal).show();
-    //     @endif
-
-    //     // Clear form and error message after modal close
-    //     editModal.addEventListener('hidden.bs.modal', () => {
-    //         editNameInput.value = '';
-    //         if (errorMsg) {
-    //             errorMsg.innerHTML = '';
-    //             errorMsg.style.display = 'none';
-    //             errorMsg.classList.remove('alert', 'alert-danger');
-    //         }
-    //     });
-    // });
-    
     $(document).on('click', '.editButton', function () {
         var id = $(this).data('id');
         var name = $(this).data('name');
@@ -190,8 +182,7 @@
         $('#edit_code').val(code);
         $('#edit_description').val(description);
         $('#edit_course_fee').val(course_fee);
-        $('#editCourseModal').attr('action', url);
+        $('#editCourseModal').find('form').attr('action', url);
     });
-    
 </script>
 @endpush
