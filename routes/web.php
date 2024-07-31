@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\CourseController;
+use App\Http\Controllers\Backend\LetslearnController;
 use App\Http\Controllers\Backend\PermissionController;
 use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\UserController;
@@ -13,7 +14,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 
 
+    //Courses
     Route::resource('courses', CourseController::class)->except(['create', 'show', 'edit']);
+    //Lets Learn 
+    Route::resource('lets-learn', LetslearnController::class)->except(['show']);
 
     ///////////////////////////// Roles And Permission Route ///////////////////////////////////
     Route::resource('permissions', PermissionController::class);

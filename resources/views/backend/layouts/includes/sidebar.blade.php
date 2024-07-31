@@ -20,6 +20,22 @@
       </a>
     </li>
 
+    <li class="nav-item">
+      <a class="nav-link {{ Route::currentRouteName() == 'lets-learn.*' ? '' : 'collapsed' }}"
+        href="{{ route('lets-learn.index') }}">
+        <i class="bi bi-pencil-square"></i>
+        <span>Lets Learn</span>
+      </a>
+    </li>
+
+    {{-- <li class="nav-item">
+      <a class="nav-link {{ Route::currentRouteName() == 'video.index' ? '' : 'collapsed' }}"
+        href="{{ route('courses.index') }}">
+        <i class="bi bi-book-fill"></i>
+        <span>Videos</span>
+      </a>
+    </li> --}}
+
     <li class="nav-heading text-info">User & Role Management ------------------------</li>
 
     {{-- @dd(Route::currentRouteName()); --}}

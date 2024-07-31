@@ -78,37 +78,6 @@
 
 @push('scripts')
 <script>
-    // document.addEventListener('DOMContentLoaded', () => {
-    //     let editButtons = document.querySelectorAll('.editButton');
-    //     let editModal = document.getElementById('editRoleModal');
-    //     let editNameInput = document.querySelector('#edit_name');
-    //     let errorMsg = document.querySelector('#errorMsg');
-
-    //     editButtons.forEach(button => {
-    //         button.addEventListener('click', () => {
-    //             let roleId = button.getAttribute('data-id');
-    //             let roleName = button.getAttribute('data-name');
-    //             let form = editModal.querySelector('form');
-    //             form.action = `/roles/${roleId}`;
-    //             editNameInput.value = roleName;
-    //         });
-    //     });
-
-    //     @if($errors->any())
-    //         new bootstrap.Modal(editModal).show();
-    //     @endif
-
-    //     // Clear form and error message after modal close
-    //     editModal.addEventListener('hidden.bs.modal', () => {
-    //         editNameInput.value = '';
-    //         if (errorMsg) {
-    //             errorMsg.innerHTML = '';
-    //             errorMsg.style.display = 'none';
-    //             errorMsg.classList.remove('alert', 'alert-danger');
-    //         }
-    //     });
-    // });
-
     $(document).on('click', '.editButton', function () {
         var id = $(this).data('id');
         var name = $(this).data('name');
