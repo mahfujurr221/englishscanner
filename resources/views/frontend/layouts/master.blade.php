@@ -39,12 +39,12 @@
 
 <body id="page-top">
     <!--================= Preloader Section Start Here =================-->
-    {{-- <div id="react__preloader">
+    <div id="react__preloader">
         <div id="react__circle_loader"></div>
         <div class="react__loader_logo">
             <img src="{{ asset('frontend/images/preload.png') }} " alt="Preload" />
         </div>
-    </div> --}}
+    </div>
     <!--================= Preloader Section End Here =================-->
 
     @include('frontend.layouts.includes.header')
