@@ -36,7 +36,7 @@
     </div>
     <div class="card-body">
         <x-table :columns="['#', 'Permission Name', 'Action']">
-            @foreach ($permissions as $key => $data)
+            @forelse ($permissions as $key => $data)
             <tr class="text-center">
                 <td>{{ $key + 1 + ($permissions->currentPage() - 1) * $permissions->perPage() }}</td>
                 <td>{{ $data->name }}</td>
@@ -57,7 +57,11 @@
                     </form>
                 </td>
             </tr>
-            @endforeach
+            @empty
+            <tr>
+                <td colspan="3" class="text-center">No data found</td>
+            </tr>
+            @endforelse
         </x-table>
         <div class="d-flex justify-content-end">
             {{ $permissions->links() }}

@@ -14,9 +14,10 @@ Route::middleware('auth')->group(function () {
 
 
     Route::resource('courses', CourseController::class)->except(['create', 'show', 'edit']);
+
     ///////////////////////////// Roles And Permission Route ///////////////////////////////////
     Route::resource('permissions', PermissionController::class);
-    Route::resource('roles', RoleController::class);
+    Route::resource('roles', RoleController::class)->except(['create', 'show', 'edit']);
     Route::get('roles/permissions/{id}', [RoleController::class, 'addPermissionToRole'])->name('role.permissions');
     Route::put('roles/permissions/{id}', [RoleController::class, 'addPermissionToRoleUpdate'])->name('role-permissions.update');
 

@@ -15,7 +15,7 @@
     </div>
     <div class="card-body">
         <x-table :columns="['#', 'Role Name', 'Action']">
-            @foreach ($roles as $key => $data)
+            @forelse ($roles as $key => $data)
             <tr class="text-center">
                 <td>{{ $key + 1 }}</td>
                 <td>{{ $data->name }}</td>
@@ -39,7 +39,11 @@
                     </form>
                 </td>
             </tr>
-            @endforeach
+            @empty
+            <tr>
+                <td colspan="3" class="text-center">No data found</td>
+            </tr>
+            @endforelse
         </x-table>
     </div>
 </div>
@@ -57,7 +61,9 @@
 </x-modal>
 
 {{-- Edit Modal --}}
-<x-modal id="editRoleModal" title="Update Role" action="{{ route('roles.update', ['role' => $data->id]) }}" method="PUT">
+<x-modal id="editRoleModal" title="Update Role" method="POST">
+    @csrf
+    @method('PUT')
     <x-slot name="footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary">Update changes</button>
@@ -72,35 +78,47 @@
 
 @push('scripts')
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        let editButtons = document.querySelectorAll('.editButton');
-        let editModal = document.getElementById('editRoleModal');
-        let editNameInput = document.querySelector('#edit_name');
-        let errorMsg = document.querySelector('#errorMsg');
+    // document.addEventListener('DOMContentLoaded', () => {
+    //     let editButtons = document.querySelectorAll('.editButton');
+    //     let editModal = document.getElementById('editRoleModal');
+    //     let editNameInput = document.querySelector('#edit_name');
+    //     let errorMsg = document.querySelector('#errorMsg');
 
-        editButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                let roleId = button.getAttribute('data-id');
-                let roleName = button.getAttribute('data-name');
-                let form = editModal.querySelector('form');
-                form.action = `/roles/${roleId}`;
-                editNameInput.value = roleName;
-            });
-        });
+    //     editButtons.forEach(button => {
+    //         button.addEventListener('click', () => {
+    //             let roleId = button.getAttribute('data-id');
+    //             let roleName = button.getAttribute('data-name');
+    //             let form = editModal.querySelector('form');
+    //             form.action = `/roles/${roleId}`;
+    //             editNameInput.value = roleName;
+    //         });
+    //     });
 
-        @if($errors->any())
-            new bootstrap.Modal(editModal).show();
-        @endif
+    //     @if($errors->any())
+    //         new bootstrap.Modal(editModal).show();
+    //     @endif
 
-        // Clear form and error message after modal close
-        editModal.addEventListener('hidden.bs.modal', () => {
-            editNameInput.value = '';
-            if (errorMsg) {
-                errorMsg.innerHTML = '';
-                errorMsg.style.display = 'none';
-                errorMsg.classList.remove('alert', 'alert-danger');
-            }
-        });
+    //     // Clear form and error message after modal close
+    //     editModal.addEventListener('hidden.bs.modal', () => {
+    //         editNameInput.value = '';
+    //         if (errorMsg) {
+    //             errorMsg.innerHTML = '';
+    //             errorMsg.style.display = 'none';
+    //             errorMsg.classList.remove('alert', 'alert-danger');
+    //         }
+    //     });
+    // });
+
+    $(document).on('click', '.editButton', function () {
+        var id = $(this).data('id');
+        var name = $(this).data('name');
+
+        var url= "{{ route('roles.update', ':id') }}";
+        url = url.replace(':id', id);
+
+        $('#editRoleModal form').attr('action', url);
+        $('#edit_name').val(name);
+        
     });
 </script>
 @endpush

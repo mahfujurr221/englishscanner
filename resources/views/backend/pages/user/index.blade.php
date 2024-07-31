@@ -49,7 +49,7 @@
 
     <div class="card-body">
         <x-table :columns="['#', 'First Name', 'Email', 'Phone', 'Role', 'Action']">
-            @foreach ($users as $key => $data)
+            @forelse($users as $key => $data)
             <tr class="text-center">
                 <td>{{ $key + 1 + ($users->currentPage() - 1) * $users->perPage() }}</td>
                 <td>{{ $data->fname }} {{ $data->lname }}</td>
@@ -74,7 +74,11 @@
                     </form>
                 </td>
             </tr>
-            @endforeach
+            @empty
+            <tr>
+                <td colspan="6" class="text-center">No data found</td>
+            </tr>
+            @endforelse
         </x-table>
         <div class="d-flex justify-content-end">
             {{ $users->links() }}

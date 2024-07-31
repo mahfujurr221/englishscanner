@@ -14,10 +14,10 @@ class RoleController extends Controller
 {
     public function __construct()
     {
-        // $this->middleware('permission:list-role', ['only' => ['index']]);
-        // $this->middleware('permission:create-role', ['only' => ['store']]);
-        // $this->middleware('permission:update-role', ['only' => ['update']]);
-        $this->middleware('permission:delete-role', ['only' => ['destroy']]);
+        $this->middleware('can:list-role', ['only' => ['index']]);
+        $this->middleware('can:create-role', ['only' => ['store']]);
+        $this->middleware('can:edit-role', ['only' => ['update']]);
+        $this->middleware('can:delete-role', ['only' => ['destroy']]);
     }
     public function index()
     {
@@ -48,6 +48,7 @@ class RoleController extends Controller
 
     public function update(Request $request, Role $role)
     {
+        // dd($role);
         $request->validate([
             'name' => 'required|string|unique:roles,name,' . $role->id,
         ]);
