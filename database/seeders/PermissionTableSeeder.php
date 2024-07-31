@@ -19,20 +19,46 @@ class PermissionTableSeeder extends Seeder
 
         // Create permissions
         $permissions = [
+            //role
             'list-role',
             'create-role',
             'edit-role',
             'delete-role',
 
+            //permission
             'list-permission',
             'create-permission',
             'edit-permission',
             'delete-permission',
 
+            //user
             'list-user',
             'create-user',
             'edit-user',
             'delete-user',
+
+            //course
+            'list-course',
+            'create-course',
+            'edit-course',
+            'delete-course',
+
+            //lets learn
+            'list-lets-learn',
+            'create-lets-learn',
+            'edit-lets-learn',
+            'delete-lets-learn',
+
+            //video
+            // 'list-video',
+            // 'create-video',
+            // 'edit-video',
+            // 'delete-video',
+
+            //profile
+            'list-profile',
+            'edit-profile',
+            'delete-profile',
         ];
 
         foreach ($permissions as $permission) {

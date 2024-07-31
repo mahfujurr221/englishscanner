@@ -2,7 +2,6 @@
 <aside id="sidebar" class="sidebar">
 
   <ul class="sidebar-nav" id="sidebar-nav">
-
     <li class="nav-item">
       <a class="nav-link {{ Route::currentRouteName() == 'dashboard' ? '' : 'collapsed' }}"
         href="{{ route('dashboard') }}">
@@ -11,57 +10,31 @@
       </a>
     </li><!-- End Dashboard Nav -->
 
-    {{-- <li class="nav-item">
-      <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-        <i class="bi bi-menu-button-wide"></i><span>Attendance</span><i class="bi bi-chevron-down ms-auto"></i>
-      </a>
-      <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-        <li>
-          <a href="components-alerts.html">
-            <i class="bi bi-circle"></i><span>Add Attendance</span>
-          </a>
-        </li>
-        <li>
-          <a href="components-accordion.html">
-            <i class="bi bi-circle"></i><span>Attendance List</span>
-          </a>
-        </li>
-      </ul>
-    </li><!-- End Components Nav --> --}}
+    <li class="nav-heading text-info">General Management ------------------------------</li>
 
     <li class="nav-item">
-      <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-        <i class="bi bi-menu-button-wide"></i><span>Employee Salary</span><i class="bi bi-chevron-down ms-auto"></i>
-      </a>
-      <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-        <li>
-          <a href="components-alerts.html">
-            <i class="bi bi-circle"></i><span>Add Salary</span>
-          </a>
-        </li>
-        <li>
-          <a href="components-accordion.html">
-            <i class="bi bi-circle"></i><span>Salary List</span>q
-          </a>
-        </li>
-
-        <li>
-          <a href="components-accordion.html">
-            <i class="bi bi-circle"></i><span>Salary Log</span>
-          </a>
-        </li>
-
-      </ul>
-    </li><!-- End Components Nav -->
-
-    <li class="nav-heading">Pages</li>
-
-    <li class="nav-item">
-      <a class="nav-link collapsed" href="users-profile.html">
-        <i class="bi bi-person"></i>
-        <span>A Single Link</span>
+      <a class="nav-link {{ Route::currentRouteName() == 'courses.index' ? '' : 'collapsed' }}"
+        href="{{ route('courses.index') }}">
+        <i class="bi bi-book-fill"></i>
+        <span>Courses</span>
       </a>
     </li>
+
+    <li class="nav-item">
+      <a class="nav-link {{ Route::currentRouteName() == 'lets-learn.*' ? '' : 'collapsed' }}"
+        href="{{ route('lets-learn.index') }}">
+        <i class="bi bi-pencil-square"></i>
+        <span>Lets Learn</span>
+      </a>
+    </li>
+
+    {{-- <li class="nav-item">
+      <a class="nav-link {{ Route::currentRouteName() == 'video.index' ? '' : 'collapsed' }}"
+        href="{{ route('courses.index') }}">
+        <i class="bi bi-book-fill"></i>
+        <span>Videos</span>
+      </a>
+    </li> --}}
 
     <li class="nav-heading text-info">User & Role Management ------------------------</li>
 
